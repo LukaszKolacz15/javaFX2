@@ -1,11 +1,14 @@
 package sample;
 
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class Controller {
+public class Controller{
+//    public class Controller implements Initializable{
+
 
     public void openDialog(){
 //        System.out.println("Działa");
