@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-import static javax.xml.bind.JAXBIntrospector.getValue;
 
 public class Controller implements Initializable {
 
@@ -28,7 +27,6 @@ public class Controller implements Initializable {
 
     @FXML
     PasswordField passwordText;
-
 
 
     @FXML
@@ -69,8 +67,8 @@ public class Controller implements Initializable {
 //    }
 
 
-    private boolean isLoginFormValid(){
-        if(loginText.getText().trim().length() < 4 || passwordText.getText().trim().length() < 4){
+    private boolean isLoginFormValid() {
+        if (loginText.getText().trim().length() < 4 || passwordText.getText().trim().length() < 4) {
             Utils.openDialog("Loging", "Login or password can not be less than four characters!");
             return false;
         }
@@ -83,45 +81,45 @@ public class Controller implements Initializable {
 //        System.out.println("Login: " + loginText.getText());
 //        System.out.println("Password: " + Utils.hashPassword(passwordText.getText()));
 
-        if(!isLoginFormValid()){
+        if (!isLoginFormValid()) {
             return;
         }
 
         Statement statement = MySqlConnector.getInstance().getNewStatement();
         try {
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE name = " + "'"+loginText.getText()+"' LIMIT 1");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM user WHERE name = " + "'" + loginText.getText() + "' LIMIT 1");
             int counter = 0;
-                while (resultSet.next()){
-                    String passwordFromDatabase = resultSet.getString("password");
+            while (resultSet.next()) {
+                String passwordFromDatabase = resultSet.getString("password");
 //                    if(passwordFromDatabase.equals(passwordText.getText())){
 
 
 //                    hashowanie!!!
 
-                    if(passwordFromDatabase.equals(Utils.hashPassword(passwordText.getText()))){
+                if (passwordFromDatabase.equals(Utils.hashPassword(passwordText.getText()))) {
 
 
 // Przełączenie na inna scene po wpisaniu poprawnego loginu i hasla
-                        try {
-                            Parent myPage = FXMLLoader.load(getClass().getResource("userView.fxml"));
-                            Scene scene = new Scene(myPage);
-                            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    try {
+                        Parent myPage = FXMLLoader.load(getClass().getResource("userView.fxml"));
+                        Scene scene = new Scene(myPage);
+                        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-                            stage.hide();
-                            stage.setScene(scene);
-                            stage.show();
+                        stage.hide();
+                        stage.setScene(scene);
+                        stage.show();
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-// /////////////////////////////////////////////////////////////////
-                        Utils.openDialog("Loging", "Done!");
-                    }else {
-                        Utils.openDialog("Loging", "Wrong password!");
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                    counter ++;
+// /////////////////////////////////////////////////////////////////
+                    Utils.openDialog("Loging", "Done!");
+                } else {
+                    Utils.openDialog("Loging", "Wrong password!");
                 }
-            if(counter == 0){
+                counter++;
+            }
+            if (counter == 0) {
                 Utils.openDialog("Loging", "User doesen't exist");
             }
             statement.close();
@@ -132,14 +130,28 @@ public class Controller implements Initializable {
     }
 
 
-
-
     public void createAccount() {
-        System.out.println("dziala");
 
-// TODO: Dodadć rejestrację
+        if (passReg.getText().equals(repeatedPassReg.getText())){
 
+            String sgl = "INSERT INTO user (name, password, lastname, number) VALUES(?, ?, ?, ?)";
+            try {
+                PreparedStatement statement = MySqlConnector.getInstance().getConnection().prepareStatement(sgl);
+                statement.setString(1, loginTextReg.getText());
+                statement.setString(2, Utils.hashPassword(passReg.getText()));
+                statement.setString(3, lastNameReg.getText());
+                statement.setString(4, telephoneReg.getText());
+                statement.execute();
+
+                Utils.openDialog("Logowanie", "Poprawnie założono konto");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else {
+            Utils.openDialog("Logowanie", "Hasła muszą być jednakowe!");
         }
+    }
 
 
     @Override

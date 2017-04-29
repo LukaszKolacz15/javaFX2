@@ -13,10 +13,7 @@ import java.sql.Statement;
 public class MySqlConnector {
 
 
-    private static final String DB = "jdbc:mysql://5.135.218.27:3306/lukaszKolacz?useUnicode=true&characterEncoding=UTF-8";
-    private static final String USER = "lukaszKolacz";
-    private static final String USERPW = "akademiakodu";
-    private static final String DRIVER = "com.mysql.jdbc.Driver";
+//BASE PASSWORDS:
 
     private static MySqlConnector ourInstance = new MySqlConnector();
 

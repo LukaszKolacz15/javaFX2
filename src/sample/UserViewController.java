@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 
@@ -83,6 +84,13 @@ public class UserViewController implements Initializable {
 //        list.setItems(items);
 //      Wywołanie metody do wstawiania na listView
         list.setItems(loadBook());
+
+        list.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                System.out.println(list.getSelectionModel().getSelectedItem());
+            }
+        });
 
     }
 
