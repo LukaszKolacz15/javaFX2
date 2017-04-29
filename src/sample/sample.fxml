@@ -14,7 +14,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <center>
         <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
@@ -25,9 +25,9 @@
                                 <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints maxHeight="304.0" minHeight="0.0" prefHeight="85.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="270.0" minHeight="10.0" prefHeight="185.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="126.0" minHeight="10.0" prefHeight="101.0" valignment="CENTER" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="304.0" minHeight="0.0" prefHeight="121.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="349.0" minHeight="10.0" prefHeight="276.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="174.0" valignment="CENTER" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
                                 <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="45.0" prefWidth="264.0" text="Sign in" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
@@ -35,7 +35,7 @@
                                         <Font name="Roboto Regular" size="36.0" />
                                     </font>
                                 </Label>
-                                <VBox alignment="CENTER" prefHeight="195.0" prefWidth="600.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                <VBox alignment="CENTER" prefHeight="238.0" prefWidth="600.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                     <children>
                               <VBox prefHeight="2.0" prefWidth="600.0">
                                  <children>
@@ -59,7 +59,7 @@
                                  </font></PasswordField>
                                     </children>
                                 </VBox>
-                                <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onMouseClicked="#openDialog" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f90000; -fx-border-color: d10e0e; -fx-background-radius: 25; -fx-border-radius: 25;" text="Sign in" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" onKeyPressed="#openDialog" onMouseClicked="#openDialog" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #f90000; -fx-border-color: d10e0e; -fx-background-radius: 25; -fx-border-radius: 25;" text="Sign in" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                     <GridPane.margin>
                                         <Insets />
                                     </GridPane.margin>
@@ -78,9 +78,9 @@
                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             </columnConstraints>
                             <rowConstraints>
-                                <RowConstraints maxHeight="118.0" minHeight="0.0" prefHeight="67.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
-                                <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="118.0" minHeight="0.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="360.0" minHeight="10.0" prefHeight="357.0" vgrow="SOMETIMES" />
+                                <RowConstraints maxHeight="127.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
                                 <Label text="Registration" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -88,7 +88,7 @@
                                         <Font name="Roboto Regular" size="36.0" />
                                     </font>
                                 </Label>
-                                <VBox alignment="CENTER" prefHeight="225.0" prefWidth="600.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                <VBox alignment="CENTER" prefHeight="297.0" prefWidth="600.0" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                     <children>
                               <VBox prefHeight="37.0" prefWidth="600.0">
                                  <children>
@@ -102,7 +102,7 @@
                                     </Separator>
                                  </children>
                               </VBox>
-                              <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Login" style="-fx-background-radius: 10; -fx-background-color: #f2f2f2; -fx-border-radius: 10; -fx-border-color: #dadada;">
+                              <TextField fx:id="loginTextReg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Login" style="-fx-background-radius: 10; -fx-background-color: #f2f2f2; -fx-border-radius: 10; -fx-border-color: #dadada;">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin>
@@ -110,7 +110,23 @@
                                     <Font size="18.0" />
                                  </font>
                               </TextField>
-                              <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Password" style="-fx-background-color: #f2f2f2; -fx-border-color: #dadada; -fx-background-radius: 10; -fx-border-radius: 10;">
+                              <TextField fx:id="lastNameReg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Last name" style="-fx-background-radius: 10; -fx-background-color: #f2f2f2; -fx-border-radius: 10; -fx-border-color: #dadada;">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="telephoneReg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Telephone number" style="-fx-background-color: #f2f2f2; -fx-background-radius: 10; -fx-border-color: #dadada; -fx-border-radius: 10;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </TextField>
+                              <PasswordField fx:id="passReg" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Password" style="-fx-background-color: #f2f2f2; -fx-border-color: #dadada; -fx-background-radius: 10; -fx-border-radius: 10;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -118,7 +134,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </PasswordField>
-                              <PasswordField maxWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Repeat password" style="-fx-background-color: #f2f2f2; -fx-border-color: #dadada; -fx-background-radius: 10; -fx-border-radius: 10;">
+                              <PasswordField fx:id="repeatedPassReg" maxWidth="-Infinity" prefHeight="40.0" prefWidth="400.0" promptText="Repeat password" style="-fx-background-color: #f2f2f2; -fx-border-color: #dadada; -fx-background-radius: 10; -fx-border-radius: 10;">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -133,7 +149,7 @@
                               </CheckBox>
                                     </children>
                                 </VBox>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ff0000; -fx-border-color: #d10e0e; -fx-background-radius: 25; -fx-border-radius: 25;" text="Register" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                <Button mnemonicParsing="false" onMouseClicked="#createAccount" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ff0000; -fx-border-color: #d10e0e; -fx-background-radius: 25; -fx-border-radius: 25;" text="Register" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                            <font>
                               <Font name="Roboto Bold" size="18.0" />
                            </font></Button>
