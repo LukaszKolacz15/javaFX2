@@ -11,9 +11,11 @@ import java.sql.Statement;
  */
 
 public class MySqlConnector {
-
-
-//BASE PASSWORDS:
+    //BASE PASSWORDS:
+    private static final String DB = "";
+    private static final String USER = "";
+    private static final String USERPW = "";
+    private static final String DRIVER = "com.mysql.jdbc.Driver";
 
     private static MySqlConnector ourInstance = new MySqlConnector();
 

@@ -94,7 +94,7 @@ public class Controller implements Initializable {
 //                    if(passwordFromDatabase.equals(passwordText.getText())){
 
 
-//                    hashowanie!!!
+// Hashowanie!!!
 
                 if (passwordFromDatabase.equals(Utils.hashPassword(passwordText.getText()))) {
 
@@ -120,7 +120,7 @@ public class Controller implements Initializable {
                 counter++;
             }
             if (counter == 0) {
-                Utils.openDialog("Loging", "User doesen't exist");
+                Utils.openDialog("Loging", "User doesen't exist! Please create an account");
             }
             statement.close();
 
@@ -130,9 +130,24 @@ public class Controller implements Initializable {
     }
 
 
-    public void createAccount() {
+    public void createAccount(MouseEvent event) {
 
         if (passReg.getText().equals(repeatedPassReg.getText())){
+
+            try {
+                Parent myPage = FXMLLoader.load(getClass().getResource("registrationCorrect.fxml"));
+                Scene scene = new Scene(myPage);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                stage.hide();
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+//            TODO: dodać walidację poprawnie wprowadzonego numeru telefonu
 
             String sgl = "INSERT INTO user (name, password, lastname, number) VALUES(?, ?, ?, ?)";
             try {
@@ -143,11 +158,12 @@ public class Controller implements Initializable {
                 statement.setString(4, telephoneReg.getText());
                 statement.execute();
 
-                Utils.openDialog("Logowanie", "Poprawnie założono konto");
+//                Utils.openDialog("Logowanie", "Poprawnie założono konto");
 
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
         }else {
             Utils.openDialog("Logowanie", "Hasła muszą być jednakowe!");
         }
